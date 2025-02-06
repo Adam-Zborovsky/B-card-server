@@ -23,11 +23,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/my-cards", auth, async (req, res) => {
-	console.log(req.user);
-
 	try {
 		const userInfo = req.user;
-		console.log(userInfo);
 		if (!userInfo.isBusiness) {
 			return handleError(res, 403, "Only business users can get my cards");
 		}

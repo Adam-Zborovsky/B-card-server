@@ -43,7 +43,6 @@ router.post("/login", async (req, res) => {
 
 router.post("/", async (req, res) => {
 	try {
-		console.log(req.body);
 		const validateErrorMessage = validateRegistration(req.body);
 		if (validateErrorMessage !== "") {
 			return handleError(res, 400, "Validation" + validateErrorMessage);
@@ -88,7 +87,6 @@ router.put("/:id", auth, async (req, res) => {
 	try {
 		const userInfo = req.user;
 		const newUserInfo = req.body;
-		console.log(req.body);
 
 		let { id } = req.params;
 
@@ -121,7 +119,6 @@ router.delete("/:id", auth, async (req, res) => {
 		}
 
 		let deletedUser = await deleteUser(id);
-		console.log(deletedUser);
 
 		res.status(202).send(deletedUser);
 	} catch (error) {
